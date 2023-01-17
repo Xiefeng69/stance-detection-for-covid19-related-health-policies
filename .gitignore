@@ -1,0 +1,14 @@
+embed_glove_embedding.pkl
+vocab_glove_embedding.pkl
+/raw
+/data/glove.6B.100d.txt
+/data/glove.42B.300d.txt
+/src/__pycache__
+/src/baselines/__pycache__
+/src/mymodel/__pycache__
+/results
+/.env
+/ckp
+/.idea
+geoencoding.npy
+/archive
