@@ -29,7 +29,7 @@ if __name__ == '__main__':
     parser.add_argument('--dual', action='store_true', help="the version of WS-BERT")
     parser.add_argument('--backbone', type=str, choices=('bert_base', 'bertweet', 'ct_bert'), default='bert_base')
     parser.add_argument('--model', type=str, 
-                        choices=('mymodel', 'tan', 'textcnn', 'ws_bert', 'dan_bert', 'bert_base', 'bertweet', 'ct_bert', 'bilstm', 'bicond', 'crossnet', 'siamnet', 'toad', 
+                        choices=('mymodel', 'tan', 'textcnn', 'ws_bert', 'bert_base', 'bertweet', 'ct_bert', 'bilstm', 'bicond', 'crossnet', 'siamnet', 
                                  'woadv', 'wogeoenc', 'wgeoemb', 'wobk'), default='mymodel')
     
     args = parser.parse_args()

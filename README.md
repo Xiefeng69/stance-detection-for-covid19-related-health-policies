@@ -3,7 +3,7 @@
 
 # Stance Detection for COVID-19-related Health Policies
 
-[DASFAA2023] The source codes and datasets for paper `Adversarial Learning-based Stance Classifier for COVID-19-related Health Policies`.
+[DASFAA2023] The source codes and datasets for paper: `Adversarial Learning-based Stance Classifier for COVID-19-related Health Policies`.
 
 [![visitors][visitors-img]][repo-url]
 
@@ -87,7 +87,7 @@ All implemented methods are stored in the folder of `src/baselines`.
 All programs are implemented using 3.6.13 and PyTorch 1.10.2 with 11.3 on a personal workstation with an NVIDIA GeForce RTX 3090 GPU. The reported results are the averaged score of 5 runs with different random initialization.
 
 ### Training settings
-In cross-target setting, the models are trained and validated on one topic and evaluated on another. There can be categorized into six source->destination tasks for cross-target evaluation: SH->WM, SH->VA, WM->SH, WMVA, VA->SH, and VA->WM. In zero-shot setting, the models are trained and validated on multiple topics and tested on one unseen topic. We use unseen topic's name as the task's name, thus, the zero-shot evaluation can be set into: SH, WM, and VA. For all tasks, the batch size is set to 16, the dropout rate is set to 0.1, and the input texts are truncated or padded to a maximum of 100 tokens. We train all models using AdamW optimizer with weight decay 5e-5 for a maximum of 100 epochs with patience of 10 epochs, and the learning rate is chosen in {1e-5, 2e-5}.
+In cross-target setting, the models are trained and validated on one topic and evaluated on another. There can be categorized into six source->destination tasks for cross-target evaluation: SH->WM, SH->VA, WM->SH, WMVA, VA->SH, and VA->WM. In zero-shot setting, the models are trained and validated on multiple topics and tested on one unseen topic. We use the unseen topic's name as the task's name, thus, the zero-shot evaluation can be set into: SH, WM, and VA. For all tasks, the batch size is set to 16, the dropout rate is set to 0.1, and the input texts are truncated or padded to a maximum of 100 tokens. We train all models using AdamW optimizer with weight decay 5e-5 for a maximum of 100 epochs with patience of 10 epochs, and the learning rate is chosen in {1e-5, 2e-5}.
 
 ### Models configuration
 For BiLSTM, BiCond, TAN, CrossNet, TextCNN, the word embeddings are initialized with the pre-trained word vectors from [GloVe](https://github.com/stanfordnlp/GloVe), and the hidden dimension is optimized in {128, 256}. For BERT, we fine-tune the pre-trained language model from the [Hugging Face Transformer Library](https://huggingface.co/) to predict the stance by appending a linear classification layer to the hidden representation of the *[CLS]* token. In terms of WS-BERT-S and WS-BERT-D, considering the computational resource and fair comparison, the maximum length of Wikipedia summaries is set to 100 tokens and we use the pre-trained uncased BERT-base as encoder, in which each word is mapped to a 768-dimensional embedding. To speed up the training process, we only finetune the top layers of the Wikipedia encoder in WS-BERT-D, which is consistent with [paper](https://arxiv.org/abs/2204.03839). In our model, we also adopt the pre-trained uncased BERT-base as encoder. The maximum length of policy description is fixed at 50, the layer number *l* of GCN is set to 2, the trade-off parameter *alpha* is set to 0.01, the GRL's parameter *lambda* is set to 0.1, and the hidden dimension of GeoEncoder is optimized in {128, 256}.
