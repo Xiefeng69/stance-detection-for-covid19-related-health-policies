@@ -92,6 +92,11 @@ In cross-target setting, the models are trained and validated on one topic and e
 ### Models configuration
 For BiLSTM, BiCond, TAN, CrossNet, TextCNN, the word embeddings are initialized with the pre-trained word vectors from [GloVe](https://github.com/stanfordnlp/GloVe), and the hidden dimension is optimized in {128, 256}. For BERT, we fine-tune the pre-trained language model from the [Hugging Face Transformer Library](https://huggingface.co/) to predict the stance by appending a linear classification layer to the hidden representation of the *[CLS]* token. In terms of WS-BERT-S and WS-BERT-D, considering the computational resource and fair comparison, the maximum length of Wikipedia summaries is set to 100 tokens and we use the pre-trained uncased BERT-base as encoder, in which each word is mapped to a 768-dimensional embedding. To speed up the training process, we only finetune the top layers of the Wikipedia encoder in WS-BERT-D, which is consistent with [paper](https://arxiv.org/abs/2204.03839). In our model, we also adopt the pre-trained uncased BERT-base as encoder. The maximum length of policy description is fixed at 50, the layer number *l* of GCN is set to 2, the trade-off parameter *alpha* is set to 0.01, the GRL's parameter *lambda* is set to 0.1, and the hidden dimension of GeoEncoder is optimized in {128, 256}.
 
+# Code of Conduct and Ethical Statement
+The tweet set for each policy contained a good mixture of pro, con, and neutral categories, as well as tweets with implicit and explicit opinions about the target. We removed the hashtags that appeared at the end of a tweet to exclude obvious cues, without making the tweet syntactically ambiguous. Each tweet was annotated by three annotators to avoid subjective errors of judgment. At present, we only collect social content on Twitter, without considering other social platforms, such as Weibo.
+
+Our dataset does not provide any personally identifiable information as only the tweet IDs and human-annotated stance labels will be shared. Thus, the dataset complies with Twitter’s information privacy policy.
+
 ## Acknowledgement
 We refer to the codes of these repos: [WS-BERT](https://github.com/zihaohe123/wiki-enhanced-stance-detection), [GVB](https://github.com/cuishuhao/GVB), [DANN](https://github.com/wogong/pytorch-dann). Thanks for their great contributions!
 
